@@ -1,4 +1,5 @@
 const gameGrid = document.getElementById('gameGrid');
+const displayMoveCount = document.getElementById('moveCount');
 
 // const USER_SELECTED_CHAR = prompt('Select your playing figure', 'X');
 const USER_SELECTED_CHAR = 'X';
@@ -7,12 +8,24 @@ const LAST_MOVE_TYPE = {
 	COMPUTER: 'COMPUTER',
 };
 let LAST_MOVE;
+let MOVE_COUNT = 0;
+
+const updateMoveCount = () => {
+	displayMoveCount.innerText = `Move count: ${MOVE_COUNT}`;
+};
+
+const resetMoveCount = () => {
+	MOVE_COUNT = 0;
+	updateMoveCount();
+};
 
 const generateGridButton = () => {
 	const button = document.createElement('button');
-	button.addEventListener('click', () => {
+	button.addEventListener('click', asdasd => {
 		button.innerText = USER_SELECTED_CHAR;
 		LAST_MOVE = LAST_MOVE_TYPE.PLAYER;
+		MOVE_COUNT++;
+		updateMoveCount();
 		checkWinCondition();
 	});
 	return button;
@@ -32,6 +45,7 @@ const endGame = winner => {
 		announceWinner(winner);
 		setTimeout(() => {
 			generateGrid();
+			resetMoveCount();
 		}, 100);
 	}, 100);
 };
@@ -54,6 +68,9 @@ const computerMove = () => {
 			playingFields[8].innerText = COMPUTER_CHAR;
 		}
 	}
+	MOVE_COUNT += 1;
+	console.log(MOVE_COUNT);
+	updateMoveCount();
 	checkWinCondition();
 };
 
