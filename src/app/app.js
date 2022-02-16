@@ -21,7 +21,10 @@ const resetMoveCount = () => {
 
 const generateGridButton = () => {
 	const button = document.createElement('button');
-	button.addEventListener('click', asdasd => {
+	button.addEventListener('click', () => {
+		if (button.innerText !== '') {
+			return;
+		}
 		button.innerText = USER_SELECTED_CHAR;
 		LAST_MOVE = LAST_MOVE_TYPE.PLAYER;
 		MOVE_COUNT++;
