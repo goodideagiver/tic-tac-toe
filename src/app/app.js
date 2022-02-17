@@ -12,6 +12,7 @@ const LAST_MOVE_TYPE = {
 const LEADERBOARD_DATA = {
 	COMPUTER_WINS: 0,
 	PLAYER_WINS: 0,
+	DRAW_COUNT: 0,
 };
 
 let LAST_MOVE;
@@ -57,7 +58,8 @@ const updateLeaderboard = sign => {
 	console.log(LEADERBOARD_DATA);
 	leaderboard.innerHTML = `
     <p>Player wins: ${LEADERBOARD_DATA.PLAYER_WINS}</p>
-    <p>Computer wins: ${LEADERBOARD_DATA.COMPUTER_WINS}</p>`;
+    <p>Computer wins: ${LEADERBOARD_DATA.COMPUTER_WINS}</p>
+    <p>Draw count: ${LEADERBOARD_DATA.DRAW_COUNT}</p>`;
 };
 
 const announceWinner = sign => alert(`The ${sign} wins the game!`);
